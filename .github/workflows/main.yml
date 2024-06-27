@@ -1,0 +1,23 @@
+name: Website FTP Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-website-main:
+    name: Deploy Website for main branch
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Website Deployment for main via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ vars.server_ip_address }}
+          username: ${{ secrets.ftp_username_test }}
+          password: ${{ secrets.ftp_password_test }}
+          protocol: ftps
