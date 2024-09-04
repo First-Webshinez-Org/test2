@@ -1,0 +1,225 @@
+.form_bg_trasnparennt {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #222c63, #3f6e9d);
+}
+
+.form_bg_trasnparennt::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.8;
+    background-color: rgb(0, 0, 0);
+}
+
+.brand_details_div {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Equal width for both columns */
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.brand_details,
+.logo_container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background: #222c63;
+    padding: 1.5rem 2.5rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    position: relative;
+}
+
+.logo_container > img {
+    width: 85%;
+    align-self: center; /* Center image vertically */
+}
+
+p {
+    color: #6b89ff;
+    text-align: justify;
+    font-size: 1.5rem;
+    line-height: 2.4rem;
+    margin: 0 !important;
+}
+
+.text-secondary {
+    color: rgba(108, 117, 125, 1);
+}
+
+.webshine_link_container {
+    margin-top: 2rem;
+    margin-bottom: -1rem;
+    color: #6b89ff;
+    font-size: 1.5rem;
+}
+
+.webshine_link {
+    color: #6b89ff !important;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.login {
+    color: #ffff;
+    margin-bottom: 3rem;
+}
+
+.field_div {
+    margin-bottom: 2rem;
+}
+
+.form_label {
+    margin-bottom: 1rem;
+    color: #ffff;
+}
+
+.input_field {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 1.3rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.8rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Style when input is focused */
+.input_field:focus {
+    border-color: #6b89ff; /* Change border color when focused */
+    box-shadow: 0 0 0.7rem #6b89ff; /* Add a box shadow for emphasis */
+}
+
+.form_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://source.unsplash.com/random/?mountain');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 3rem 0;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.form_section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.8;
+    background-color: rgb(0, 0, 0);
+    overflow: hidden;
+}
+
+.form_section .form_section_inner {
+    opacity: 1;
+    z-index: 10;
+    padding: 3.5rem;
+    border-radius: 1rem;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.07);
+}
+
+.form_section .form_section_inner .btn_custom {
+    color: white;
+    border-radius: 1rem;
+    outline: none;
+    border: 0;
+    background: #222c63;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.6rem;
+}
+
+.form_section .form_section_inner .btn_custom:hover,
+.form_section .form_section_inner .btn_custom:focus,
+.form_section .form_section_inner .btn_custom:focus-within {
+    background: white;
+    color: #222c63;
+}
+
+.form_check {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    margin-top: -1rem;
+    min-height: 1.5rem;
+    padding-left: 1.5em;
+}
+
+/* Style the checkbox to be transparent when not checked */
+.form_check_input {
+    width: 1em;
+    height: 1em;
+    appearance: none;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 0.3rem;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+
+/* Reset to default appearance when checked */
+.form_check_input:checked {
+    appearance: checkbox;
+    background-color: initial; /* Reset background color */
+    border-color: initial; /* Reset border color */
+}
+
+.form_check_label {
+    color: #ffff;
+    margin-top: 2px;
+}
+
+.nav_link {
+    font-style: italic;
+    color: #6b89ff;
+}
+
+@media (max-width: 992px) {
+    .brand_details_div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .brand_details {
+        display: none;
+    }
+
+    .form_section {
+        width: 80vw;
+        border-radius: 1rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .form_check {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-items: center;
+    }
+
+    .nav_link {
+        margin-left: -2rem;
+        font-size: 1.3rem;
+    }
+}
