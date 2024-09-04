@@ -3,11 +3,6 @@ on:
     push:
         branches:
             - main
-            - app_backup
-            - default_main
-            - default_update
-            - maruf
-            - nusrat
 
 jobs:
     web-deploy:
@@ -18,61 +13,21 @@ jobs:
               uses: actions/checkout@v4
 
             # Use a specific PHP version that satisfies Laravel 11.x requirements
-            # - name: Setup PHP
-            #   uses: shivammathur/setup-php@v2
-            #   with:
-            #     php-version: '8.2'
+            - name: Setup PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                php-version: '8.2'
     
-            # - name: Install Composer Dependencies
-            #   run: composer install --no-scripts --no-interaction --prefer-dist
+            - name: Install Composer Dependencies
+              run: composer install --no-scripts --no-interaction --prefer-dist
     
-            # - name: Copy .env file
-            #   run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+            - name: Copy .env file
+              run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
             - name: Sync files for main
               if: github.ref == 'refs/heads/main'
               uses: SamKirkland/FTP-Deploy-Action@v4.3.5
               with:
-                  server: ${{ vars.server_ip_address }}
-                  username: ${{ secrets.ftp_username_app }}
-                  password: ${{ secrets.ftp_password_app }}
-                  
-            - name: Sync files for app
-              if: github.ref == 'refs/heads/app_backup'
-              uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-              with:
-                  server: ${{ vars.server_ip_address }}
-                  username: ${{ secrets.ftp_username_app_backup }}
-                  password: ${{ secrets.ftp_password_app_backup }}
-
-            - name: Sync files for default_main
-              if: github.ref == 'refs/heads/default_main'
-              uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-              with:
-                  server: ${{ vars.server_ip_address }}
-                  username: ${{ secrets.ftp_username_default }}
-                  password: ${{ secrets.ftp_password_default }}
-
-            - name: Sync files for default_update
-              if: github.ref == 'refs/heads/default_update'
-              uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-              with:
-                  server: ${{ vars.server_ip_address }}
-                  username: ${{ secrets.ftp_username_default_update }}
-                  password: ${{ secrets.ftp_password_default_update }}
-                  
-            - name: Sync files for maruf
-              if: github.ref == 'refs/heads/maruf'
-              uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-              with:
-                  server: ${{ vars.server_ip_address }}
-                  username: ${{ secrets.ftp_username_maruf }}
-                  password: ${{ secrets.ftp_password_maruf }}
-
-            - name: Sync files for nusrat
-              if: github.ref == 'refs/heads/nusrat'
-              uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-              with:
-                  server: ${{ vars.server_ip_address }}
-                  username: ${{ secrets.ftp_username_nusrat }}
-                  password: ${{ secrets.ftp_password_nusrat }}
+                  server: 138.201.206.29
+                  username: ${{ secrets.ftp_username_test }}
+                  password: ${{ secrets.ftp_password_test }}                
